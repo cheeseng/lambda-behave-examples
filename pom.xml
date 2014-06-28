@@ -16,23 +16,27 @@
 
   <build>
     <plugins>
+                        
+
+
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.17</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.surefire</groupId>
-                        <artifactId>surefire-junit47</artifactId>
-                        <version>2.17</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <includes>
-                        <include>**/*Spec.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
+  <groupId>org.scalatest</groupId>
+  <artifactId>scalatest-maven-plugin</artifactId>
+  <version>1.0</version>
+  <configuration>
+    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+    <junitxml>.</junitxml>
+    <filereports>WDF TestSuite.txt</filereports>
+  </configuration>
+  <executions>
+    <execution>
+      <id>test</id>
+      <goals>
+        <goal>test</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
     </plugins>
   </build>
 
@@ -40,7 +44,7 @@
     <dependency>
       <groupId>com.insightfullogic</groupId>
       <artifactId>lambda-behave</artifactId>
-      <version>0.1</version>
+      <version>0.2-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
